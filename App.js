@@ -1,20 +1,31 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+import 'react-native-reanimated'
+ import 'react-native-gesture-handler';
+ import React from 'react';
+ import {YellowBox} from 'react-native';
+ import {SafeAreaProvider} from 'react-native-safe-area-context';
+ import {enableScreens} from 'react-native-screens';
+ 
+ enableScreens();
+ 
+ // TODO: Remove when fixed
+ YellowBox.ignoreWarnings([
+   'VirtualizedLists should never be nested',
+   'Warning: componentWillReceiveProps has been renamed, and is not recommended',
+   'Animated: `useNativeDriver` was not specified. This is a required option and must be explicitly set to `true` or `false`',
+ ]);
+ 
+ // import MainNavigatorA or MainNavigatorB to preview design differnces
+ import MainNavigator from './app/navigation/MainNavigator';
+ 
+ // APP
+ function App() {
+   return (
+     <SafeAreaProvider>
+       <MainNavigator />
+     </SafeAreaProvider>
+   );
+ }
+ 
+ export default App;
+ 
